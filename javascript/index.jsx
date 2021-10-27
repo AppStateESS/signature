@@ -222,28 +222,7 @@ const Signature = () => {
           <table className="table table-striped">
             <tbody>
               <tr>
-                <td style={{width: '50%'}}>
-                  <a
-                    style={{textDecoration: 'none', color: '#000'}}
-                    href={`https://${site}`}>
-                    <div style={{position: 'relative'}} ref={sigImage}>
-                      <div
-                        style={{
-                          width: '300px',
-                          height: '63px',
-                          position: 'absolute',
-                          textAlign: 'center',
-                          fontFamily: 'Times New Roman, Times, Serif',
-                          top: `${fontTop}px`,
-                          fontSize,
-                        }}>
-                        {department}
-                      </div>
-                      <img src="./swoop.png" />
-                    </div>
-                  </a>
-                </td>
-                <td style={{width: '50%'}}>
+                <td style={{width: '50%', paddingRight: '20px'}}>
                   <div style={{fontFamily: 'Times New Roman, Times, Serif'}}>
                     <strong>{name ? name : 'Example Name'}</strong>
                   </div>
@@ -285,6 +264,27 @@ const Signature = () => {
                       {site ? site : 'department.appstate.edu'}
                     </a>
                   </div>
+                </td>
+                <td style={{width: '50%'}}>
+                  <a
+                    style={{textDecoration: 'none', color: '#000'}}
+                    href={`https://${site}`}>
+                    <div style={{position: 'relative'}} ref={sigImage}>
+                      <div
+                        style={{
+                          width: '300px',
+                          height: '63px',
+                          position: 'absolute',
+                          textAlign: 'center',
+                          fontFamily: 'Times New Roman, Times, Serif',
+                          top: `${fontTop}px`,
+                          fontSize,
+                        }}>
+                        {department}
+                      </div>
+                      <img src="./swoop.png" />
+                    </div>
+                  </a>
                 </td>
               </tr>
             </tbody>
