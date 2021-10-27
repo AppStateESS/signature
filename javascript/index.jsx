@@ -304,7 +304,7 @@ const Signature = () => {
         </div>
       </div>
       <div>
-        <button onClick={selectAll}>Select all</button>&nbsp; After the text is
+        <button onClick={selectAll}>Select all</button> After the text is
         highlighted, CTRL-C to copy.
       </div>
       <div>
