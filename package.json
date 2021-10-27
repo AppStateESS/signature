@@ -1,0 +1,45 @@
+{
+  "name": "signature",
+  "version": "1.0.0",
+  "description": "Create a signature block for email clients",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "rm -rf ./javascript/build && webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AppStateESS/signature.git"
+  },
+  "keywords": [
+    "signature"
+  ],
+  "author": "Matthew McNaney <mcnaneym@appstate.edu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AppStateESS/signature/issues"
+  },
+  "homepage": "https://github.com/AppStateESS/signature#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.4",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/runtime": "^7.15.4",
+    "babel-loader": "^8.2.2",
+    "browser-sync": "^2.27.5",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "es6-promise": "^4.2.8",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "regenerator-runtime": "^0.13.9",
+    "terser": "^5.7.2",
+    "terser-webpack-plugin": "^5.2.3",
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "dom-to-image": "^2.6.0"
+  }
+}
