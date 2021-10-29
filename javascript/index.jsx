@@ -114,32 +114,24 @@ const Signature = () => {
       <table className="table table">
         <tbody>
           <tr>
-            <td>
-              <img src="./img/settings.gif" className="img-fluid d-block" />
-              <small className="alert alert-success p-2 d-block">
-                Opening settings
-              </small>
-
-              <img src="./img/signaturesetting.jpg" className="img-fluid" />
-              <small className="alert alert-success p-2 d-block">
-                Signature setting area
-              </small>
-            </td>
-            <td>
-              <h2>Step 1</h2>
-              <ol>
-                <li>
-                  <p>Open a separate tab or window on Gmail.</p>
-                </li>
-                <li>
-                  <p>
-                    Open the Gmail settings menu and click &quot;See all
-                    settings.&quot;
-                  </p>
-                </li>
-                <li>Scroll down to the signature setting area.</li>
-                <li>Return to this page.</li>
-              </ol>
+            <td colSpan="2">
+              <div className="row">
+                <div className="col-sm-6">
+                  <h2>Step 1</h2>
+                  <ol>
+                    <li>Open a separate tab or window on Gmail.</li>
+                    <li>
+                      Open the Gmail settings menu and click &quot;See all
+                      settings.&quot;
+                    </li>
+                    <li>Scroll down to the signature setting area.</li>
+                    <li>Return to this page.</li>
+                  </ol>
+                </div>
+                <div className="col-sm-6">
+                  <img src="./img/settings.gif" className="img-fluid d-block" />
+                </div>
+              </div>
             </td>
           </tr>
           <tr>
@@ -168,8 +160,11 @@ const Signature = () => {
               <h2>Step 4</h2>
               <p>Do the following:</p>
               <ol>
-                <li>Click the Make image button</li>
-                <li>Right click on the image.</li>
+                <li>Click the Make image button to the right.</li>
+                <li>
+                  A copy of the &quot;swoop&quot; graphic will appear. Right
+                  click on the image.
+                </li>
                 <li>Left click on &quot;Save image as&quot;.</li>
                 <li>
                   Save the image to your desktop or somewhere you can find it
@@ -188,81 +183,98 @@ const Signature = () => {
           </tr>
           <tr>
             <td colSpan="2">
-              <h2>Step 5</h2>
-              <p>
-                Google will not let you paste in an image, so the follow the
-                steps below as a workaround.
-              </p>
-              <ol>
-                <li>
-                  Substitute the image placement with a flag by clicking this
-                  button:{' '}
-                  <button
-                    className="btn btn-sm btn-primary"
-                    onClick={removeRender}>
-                    Make [Paste image here] target
-                  </button>
-                </li>
-                <li>
-                  Click this button to highlight the signature:{' '}
-                  <button
-                    className="btn btn-sm btn-primary"
-                    onClick={selectAll}>
-                    Select all
-                  </button>
-                </li>
-                <li>Your signature above should now be highlighted.</li>
-                <li>
-                  Key <code>CTRL-C</code> to copy the signature information to
-                  your clipboard.
-                </li>
-              </ol>
+              <div className="row">
+                <div className="col-sm-8">
+                  <h2>Step 5</h2>
+                  <p>
+                    Google will not let you paste the signature with the
+                    graphic, so follow the steps below as a workaround.
+                  </p>
+                  <ol>
+                    <li>
+                      Substitute the image placement with a flag by clicking
+                      this button:{' '}
+                      <button
+                        className="btn btn-sm btn-primary"
+                        onClick={removeRender}>
+                        Make [Paste image here] target
+                      </button>
+                    </li>
+                    <li>
+                      Click this button to highlight the signature:{' '}
+                      <button
+                        className="btn btn-sm btn-primary"
+                        onClick={selectAll}>
+                        Select all
+                      </button>
+                    </li>
+                    <li>Your signature above should now be highlighted.</li>
+                    <li>
+                      Key <code>CTRL-C</code> to copy the signature information
+                      to your clipboard.
+                    </li>
+                  </ol>
+                </div>
+                <div className="col-sm-4">
+                  <img src="./img/paste-image.jpg" className="img-fluid" />
+                </div>
+              </div>
             </td>
           </tr>
           <tr>
             <td colSpan="2">
               <h2>Final Steps</h2>
-
-              <p>
-                You are almost done. You have the copy of the signature on your
-                clipboard. Now you just need to paste it in.
-              </p>
-              <ol>
-                <li>Go back to Google Settings page.</li>
-                <li>Click the &quot;+ Create New&quot; button.</li>
-                <li>Name it something snazzy.</li>
-                <li>
-                  The cursor will be in the editor box. Use <code>CTRL-P</code>{' '}
-                  to paste in the signature.
-                </li>
-                <li>
-                  Now you need to get the image in. Highlight the [Paste image
-                  here] text with your mouse.
-                </li>
-                <li>
-                  Click on the &quot;Insert image&quot; button on the signature
-                  editor.
-                </li>
-                <li>Click on the &quot;Upload&quot; button.</li>
-                <li>
-                  Drag the signature image you saved in Step 4 into the space or
-                  click on the &quot;Select a file from your device&quot; button
-                  and find the saved file.
-                </li>
-                <li>
-                  If you want this signature to be your default, choose it from
-                  the dropdown menu underneath.
-                </li>
-                <li>
-                  Last step, scroll to the bottom of the page and click the
-                  &quot;Save Changes&quot; button.
-                </li>
-              </ol>
-              <p>
-                Congratulations! You now have a rockin' signature. If you are
-                comfortable with the editing, you are free to go back to
-                Settings and make changes.
-              </p>
+              <div className="row">
+                <div className="col-sm-6">
+                  <p>
+                    You are almost done. You have the copy of the signature on
+                    your clipboard. Now you just need to paste it in.
+                  </p>
+                  <ol>
+                    <li>Go back to Google Settings page.</li>
+                    <li>Click the &quot;+ Create New&quot; button.</li>
+                    <li>Name it something snazzy.</li>
+                    <li>
+                      The cursor will be in the editor box. Use{' '}
+                      <code>CTRL-P</code> to paste in the signature.
+                    </li>
+                    <li>
+                      Now you need to get the image in. Highlight the [Paste
+                      image here] text with your mouse.
+                    </li>
+                    <li>
+                      Click on the &quot;Insert image&quot; button on the
+                      signature editor.
+                    </li>
+                    <li>Click on the &quot;Upload&quot; button.</li>
+                    <li>
+                      Drag the signature image you saved in Step 4 into the
+                      space or click on the &quot;Select a file from your
+                      device&quot; button and find the saved file.
+                    </li>
+                    <li>
+                      If you want this signature to be your default, choose it
+                      from the dropdown menu underneath.
+                    </li>
+                    <li>
+                      Last step,{' '}
+                      <strong>
+                        scroll to the bottom of the page and click the
+                        &quot;Save Changes&quot; button
+                      </strong>
+                      .
+                    </li>
+                  </ol>
+                  <p>
+                    Congratulations! You now have a rockin' signature. If you
+                    are comfortable with the editing, you are free to go back to
+                    Settings and make changes.
+                  </p>
+                </div>
+                <div className="col-sm-6">
+                  <img src="./img/signature-edit.gif" className="img-fluid" />
+                </div>
+              </div>
             </td>
           </tr>
         </tbody>
