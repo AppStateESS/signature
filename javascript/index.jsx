@@ -1,10 +1,11 @@
 'use strict'
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useRef} from 'react'
 import Buildings from './Buildings'
 import ReactDOM from 'react-dom'
 import domtoimage from 'dom-to-image'
 import Form from './Form'
 import SignatureView from './SignatureView'
+import Slider from 'react-input-slider'
 
 const Signature = () => {
   const defaultInfo = {
@@ -22,45 +23,23 @@ const Signature = () => {
     sigSource: '',
     fontSize: 30,
     fontTop: 0,
+    lineHeight: 30,
     imageDownload: null,
   }
 
   const [info, setInfo] = useState({...defaultInfo})
-  const [fontSize, setFontSize] = useState(30)
-  const [fontTop, setFontTop] = useState(0)
   const [imageDownload, setImageDownload] = useState()
-  const [rendered, setRendered] = useState(false)
 
   const update = (varname, value) => {
+    if (varname === 'email' && value.match(/@/)) {
+      return
+    }
     info[varname] = value
     setInfo({...info})
   }
 
   const sig = useRef()
   const sigImage = useRef()
-
-  useEffect(() => {
-    if (rendered) {
-      let textLength = info.department.length
-
-      let baseSize = 48
-      if (textLength >= baseSize) {
-        textLength = baseSize - 2
-      }
-      setFontSize(baseSize - textLength)
-      if (textLength < 10) {
-        setFontTop(0)
-      } else if (textLength > 10 && textLength < 20) {
-        setFontTop(10)
-      } else if (textLength > 20 && textLength < 28) {
-        setFontTop(15)
-      } else if (textLength > 28) {
-        setFontTop(22)
-      }
-    } else {
-      setRendered(true)
-    }
-  }, [info.department])
 
   const makeImage = () => {
     const node = sigImage.current
@@ -127,19 +106,68 @@ const Signature = () => {
             </td>
             <td>
               <h2>Step 2</h2>
-              <p>Fill in your information to the left.</p>
+              <p>
+                Fill in your information to the left. You can see the changes
+                reflected in your signature below.
+              </p>
             </td>
           </tr>
           <tr>
             <td>
-              <SignatureView {...{sig, info, fontSize, fontTop, sigImage}} />
+              <SignatureView {...{sig, info, sigImage}} />
             </td>
             <td>
               <h2>Step 3</h2>
+              <p>Review the look of your signature.</p>
               <p>
-                Review the look of your signature. Note that Google will alter
-                this slightly as it removes some formatting.
+                You can shift and resize your department name in the graphic by
+                using the sliders below.
               </p>
+              <div>
+                <table className="table table-striped">
+                  <tbody>
+                    <tr>
+                      <td>
+                        Font size: {info.fontSize}
+                        <br />
+                        <Slider
+                          axis="x"
+                          x={info.fontSize}
+                          onChange={(e) => {
+                            update('fontSize', e.x)
+                          }}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Top space: {info.fontTop}
+                        <br />
+                        <Slider
+                          axis="x"
+                          x={info.fontTop}
+                          onChange={(e) => {
+                            update('fontTop', e.x)
+                          }}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Line height: {info.lineHeight}
+                        <br />
+                        <Slider
+                          axis="x"
+                          x={info.lineHeight}
+                          onChange={(e) => {
+                            update('lineHeight', e.x)
+                          }}
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </td>
           </tr>
           <tr>
