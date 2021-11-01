@@ -26,7 +26,6 @@ const Signature = () => {
   }
 
   const [info, setInfo] = useState({...defaultInfo})
-  const [sigSource, setSigSource] = useState('')
   const [fontSize, setFontSize] = useState(30)
   const [fontTop, setFontTop] = useState(0)
   const [imageDownload, setImageDownload] = useState()
@@ -78,18 +77,6 @@ const Signature = () => {
         console.error('oops, something went wrong!', error)
       })
   }
-
-  const copy = () => {
-    navigator.clipboard.write(sig.current.innerHTML)
-  }
-
-  // useEffect(() => {
-  //   navigator.clipboard.write(sig.current.innerHTML)
-  // }, [sigSource])
-
-  // const updateSource = () => {
-  //   setSigSource(sig.current.innerHTML)
-  // }
 
   const selectAll = () => {
     if (document.body.createTextRange) {
@@ -266,9 +253,9 @@ const Signature = () => {
                     </li>
                   </ol>
                   <p>
-                    Congratulations! You now have a rockin' signature. If you
-                    are comfortable with the editing, you are free to go back to
-                    Settings and make changes.
+                    Congratulations! You now have a rockin&apos; signature. If
+                    you are comfortable with the editing, you are free to go
+                    back to Settings and make changes.
                   </p>
                 </div>
                 <div className="col-sm-6">
