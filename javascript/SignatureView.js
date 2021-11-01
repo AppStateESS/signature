@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SigImage from './SigImage'
 
-const SignatureView = ({sig, info, fontSize, fontTop, sigImage}) => {
+const SignatureView = ({sig, info, sigImage}) => {
   const {
     position,
     email,
@@ -16,6 +16,9 @@ const SignatureView = ({sig, info, fontSize, fontTop, sigImage}) => {
     address,
     department,
     name,
+    lineHeight,
+    fontSize,
+    fontTop,
   } = info
   return (
     <div
@@ -34,6 +37,7 @@ const SignatureView = ({sig, info, fontSize, fontTop, sigImage}) => {
             fontFamily: 'Helvetica, Arial, Sans-Serif',
             fontSize: '13px',
             color: '#444',
+            marginBottom: '10px',
           }}>
           <em>{position ? position : 'Position title'}</em>
           <br />
@@ -65,9 +69,16 @@ const SignatureView = ({sig, info, fontSize, fontTop, sigImage}) => {
         </div>
 
         <a
-          style={{textDecoration: 'unset', color: '#000'}}
+          style={{
+            textDecoration: 'unset',
+            color: '#000',
+            display: 'block',
+            marginBottom: '6px',
+          }}
           href={`https://${site}`}>
-          <SigImage {...{sigImage, fontSize, department, fontTop}} />
+          <SigImage
+            {...{sigImage, fontSize, department, fontTop, lineHeight}}
+          />
         </a>
 
         <div
