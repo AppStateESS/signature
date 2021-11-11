@@ -25,6 +25,9 @@ const Signature = () => {
     fontTop: 0,
     lineHeight: 30,
     imageDownload: null,
+    imagePosition: 0,
+    imageType: 0,
+    tagLine: true,
   }
 
   const [info, setInfo] = useState({...defaultInfo})
@@ -113,61 +116,137 @@ const Signature = () => {
             </td>
           </tr>
           <tr>
-            <td>
-              <SignatureView {...{sig, info, sigImage}} />
-            </td>
-            <td>
+            <td colSpan="2">
+              <hr />
               <h2>Step 3</h2>
-              <p>Review the look of your signature.</p>
-              <p>
-                You can shift and resize your department name in the graphic by
-                using the sliders below.
-              </p>
-              <div>
-                <table className="table table-striped">
-                  <tbody>
-                    <tr>
-                      <td>
-                        Font size: {info.fontSize}
-                        <br />
-                        <Slider
-                          axis="x"
-                          x={info.fontSize}
-                          onChange={(e) => {
-                            update('fontSize', e.x)
-                          }}
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Top space: {info.fontTop}
-                        <br />
-                        <Slider
-                          axis="x"
-                          x={info.fontTop}
-                          onChange={(e) => {
-                            update('fontTop', e.x)
-                          }}
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Line height: {info.lineHeight}
-                        <br />
-                        <Slider
-                          axis="x"
-                          x={info.lineHeight}
-                          onChange={(e) => {
-                            update('lineHeight', e.x)
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div className="row">
+                <div className="col-sm-6">
+                  <p>Review the look of your signature.</p>
+                  <div className="mb-3">
+                    <h4>Position</h4>
+                    <label>
+                      <input
+                        type="radio"
+                        name="imagePosition"
+                        value="0"
+                        onClick={(e) => {
+                          update('imagePosition', parseInt(e.target.value))
+                        }}
+                        defaultChecked={info.imagePosition === 0}
+                      />{' '}
+                      Bottom
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="radio"
+                        name="imagePosition"
+                        value="1"
+                        onClick={(e) => {
+                          update('imagePosition', parseInt(e.target.value))
+                        }}
+                        defaultChecked={info.imagePosition === 1}
+                      />{' '}
+                      Right
+                    </label>
+                  </div>
+                  <div className="mb-3">
+                    <h4>Image type</h4>
+                    <label>
+                      <input
+                        type="radio"
+                        name="imageType"
+                        value="0"
+                        onClick={(e) => {
+                          update('imageType', parseInt(e.target.value))
+                        }}
+                        defaultChecked={info.imageType === 0}
+                      />{' '}
+                      Mountain bird
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="radio"
+                        name="imageType"
+                        value="1"
+                        onClick={(e) => {
+                          update('imageType', parseInt(e.target.value))
+                        }}
+                        defaultChecked={info.imageType === 1}
+                      />{' '}
+                      Big A
+                    </label>
+                  </div>
+                  <div>
+                    <h4>Tagline</h4>
+                    <label>
+                      <input
+                        type="checkbox"
+                        onChange={() => {
+                          update('tagLine', !info.tagLine)
+                        }}
+                        value="1"
+                        checked={info.tagLine}
+                      />{' '}
+                      Include tag line
+                    </label>
+                  </div>
+                </div>
+                <div className="col-sm-6">
+                  <h4>Sizing</h4>
+                  <p>
+                    You can shift and resize your department name in the graphic
+                    by using the sliders below.
+                  </p>
+                  <div>
+                    <table className="table table-striped">
+                      <tbody>
+                        <tr>
+                          <td>
+                            Font size: {info.fontSize}
+                            <br />
+                            <Slider
+                              axis="x"
+                              x={info.fontSize}
+                              onChange={(e) => {
+                                update('fontSize', e.x)
+                              }}
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Top space: {info.fontTop}
+                            <br />
+                            <Slider
+                              axis="x"
+                              x={info.fontTop}
+                              onChange={(e) => {
+                                update('fontTop', e.x)
+                              }}
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Line height: {info.lineHeight}
+                            <br />
+                            <Slider
+                              axis="x"
+                              x={info.lineHeight}
+                              onChange={(e) => {
+                                update('lineHeight', e.x)
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
+              <SignatureView {...{sig, info, sigImage}} />
             </td>
           </tr>
           <tr>
@@ -177,8 +256,8 @@ const Signature = () => {
               <ol>
                 <li>Click the Make image button to the right.</li>
                 <li>
-                  A copy of the &quot;swoop&quot; graphic will appear. Right
-                  click on the image.
+                  A copy of the Mountain Bird or Block A graphic will appear.
+                  Right click on the image.
                 </li>
                 <li>Left click on &quot;Save image as&quot;.</li>
                 <li>
