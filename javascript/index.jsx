@@ -294,13 +294,12 @@ const Signature = () => {
               <p>Do the following:</p>
               <ol>
                 <li>
-                  Click this{' '}
+                  Click this button:{' '}
                   <button
                     className="btn btn-primary btn-sm"
                     onClick={makeImage}>
                     Make image
-                  </button>{' '}
-                  button to the right.
+                  </button>
                 </li>
                 <li>
                   A copy of the Mountain Bird or Block A graphic will appear.
