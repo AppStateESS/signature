@@ -26,7 +26,7 @@ const SigText = ({info}) => {
           fontSize: '17px',
         }}>
         <strong>{name ? name : 'Example Name'}</strong>
-        {pronouns && <span style={{fontSize: '14px'}}>&nbsp;({pronouns})</span>}
+        {pronouns && <span style={{fontSize: '14px'}}> ({pronouns})</span>}
       </div>
       <div
         style={{
