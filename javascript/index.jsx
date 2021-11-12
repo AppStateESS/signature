@@ -10,7 +10,9 @@ import Slider from 'react-input-slider'
 const Signature = () => {
   const defaultInfo = {
     department: 'Example department',
+    showDepartment: false,
     name: '',
+    pronouns: '',
     position: '',
     email: '',
     phone: '',
@@ -26,7 +28,7 @@ const Signature = () => {
     lineHeight: 30,
     imageDownload: null,
     imagePosition: 0,
-    imageType: 0,
+    imageType: 1,
     tagLine: true,
   }
 
@@ -80,175 +82,212 @@ const Signature = () => {
 
   return (
     <div>
+      <div className="row">
+        <div className="col-sm-6">
+          <h2>Step 1</h2>
+          <ol>
+            <li>Open a separate tab or window on Gmail.</li>
+            <li>
+              Open the Gmail settings menu and click &quot;See all
+              settings.&quot;
+            </li>
+            <li>Scroll down to the signature setting area.</li>
+            <li>Return to this page.</li>
+          </ol>
+        </div>
+        <div className="col-sm-6">
+          <img src="./img/settings.gif" className="img-fluid d-block" />
+        </div>
+      </div>
+      <div>
+        <h2>Step 2</h2>
+        <p>
+          Fill in your information below. You can see the changes reflected in
+          Step 3.
+        </p>
+      </div>
+      <Form {...{info, update}} />
+      <div>
+        {' '}
+        <h2>Step 3</h2>
+        <p>Review the look of your signature.</p>
+        <div className="row">
+          <div className="col-sm-3">
+            <div className="mb-3">
+              <strong>Position</strong>
+              <br />
+              <label>
+                <input
+                  type="radio"
+                  name="imagePosition"
+                  value="0"
+                  onClick={(e) => {
+                    update('imagePosition', parseInt(e.target.value))
+                  }}
+                  defaultChecked={info.imagePosition === 0}
+                />{' '}
+                Bottom
+              </label>
+              <br />
+              <label>
+                <input
+                  type="radio"
+                  name="imagePosition"
+                  value="1"
+                  onClick={(e) => {
+                    update('imagePosition', parseInt(e.target.value))
+                  }}
+                  defaultChecked={info.imagePosition === 1}
+                />{' '}
+                Right
+              </label>
+            </div>
+            <div className="mb-3">
+              <strong>Image type</strong>
+              <br />
+              <label>
+                <input
+                  type="radio"
+                  name="imageType"
+                  value="0"
+                  onClick={(e) => {
+                    update('imageType', parseInt(e.target.value))
+                  }}
+                  defaultChecked={info.imageType === 0}
+                />{' '}
+                None
+              </label>
+              <br />
+              <label>
+                <input
+                  type="radio"
+                  name="imageType"
+                  value="1"
+                  onClick={(e) => {
+                    update('imageType', parseInt(e.target.value))
+                  }}
+                  defaultChecked={info.imageType === 1}
+                />{' '}
+                Mountain bird
+              </label>
+              <br />
+              <label>
+                <input
+                  type="radio"
+                  name="imageType"
+                  value="2"
+                  onClick={(e) => {
+                    update('imageType', parseInt(e.target.value))
+                  }}
+                  defaultChecked={info.imageType === 2}
+                />{' '}
+                Big A
+              </label>
+              <br />
+              <label>
+                <input
+                  type="radio"
+                  name="imageType"
+                  value="3"
+                  onClick={(e) => {
+                    update('imageType', parseInt(e.target.value))
+                  }}
+                  defaultChecked={info.imageType === 3}
+                />{' '}
+                Vaccinated
+              </label>
+            </div>
+          </div>
+          <div className="col-sm-3">
+            <div className="mb-3">
+              <strong>Department</strong>
+              <br />
+              <label>
+                <input
+                  type="checkbox"
+                  onChange={() => {
+                    update('showDepartment', !info.showDepartment)
+                  }}
+                  value="1"
+                  checked={info.showDepartment}
+                />{' '}
+                Show under position
+              </label>
+            </div>
+            <div>
+              <strong>Tagline</strong>
+              <br />
+              <label>
+                <input
+                  type="checkbox"
+                  onChange={() => {
+                    update('tagLine', !info.tagLine)
+                  }}
+                  value="1"
+                  checked={info.tagLine}
+                />{' '}
+                Include tag line
+              </label>
+            </div>
+          </div>
+          <div className="col-sm-6">
+            <strong>Sizing</strong>
+            <p>
+              You can shift and resize your department name in the graphic by
+              using the sliders below.
+            </p>
+            <div>
+              <table className="table table-striped">
+                <tbody>
+                  <tr>
+                    <td>
+                      Font size: {info.fontSize}
+                      <br />
+                      <Slider
+                        axis="x"
+                        x={info.fontSize}
+                        onChange={(e) => {
+                          update('fontSize', e.x)
+                        }}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Top space: {info.fontTop}
+                      <br />
+                      <Slider
+                        axis="x"
+                        x={info.fontTop}
+                        onChange={(e) => {
+                          update('fontTop', e.x)
+                        }}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Line height: {info.lineHeight}
+                      <br />
+                      <Slider
+                        axis="x"
+                        x={info.lineHeight}
+                        onChange={(e) => {
+                          update('lineHeight', e.x)
+                        }}
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <SignatureView {...{sig, info, sigImage}} />
+      </div>
+
       <table className="table table">
         <tbody>
-          <tr>
-            <td colSpan="2">
-              <div className="row">
-                <div className="col-sm-6">
-                  <h2>Step 1</h2>
-                  <ol>
-                    <li>Open a separate tab or window on Gmail.</li>
-                    <li>
-                      Open the Gmail settings menu and click &quot;See all
-                      settings.&quot;
-                    </li>
-                    <li>Scroll down to the signature setting area.</li>
-                    <li>Return to this page.</li>
-                  </ol>
-                </div>
-                <div className="col-sm-6">
-                  <img src="./img/settings.gif" className="img-fluid d-block" />
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Form {...{info, update}} />
-            </td>
-            <td>
-              <h2>Step 2</h2>
-              <p>
-                Fill in your information to the left. You can see the changes
-                reflected in your signature below.
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td colSpan="2">
-              <hr />
-              <h2>Step 3</h2>
-              <div className="row">
-                <div className="col-sm-6">
-                  <p>Review the look of your signature.</p>
-                  <div className="mb-3">
-                    <h4>Position</h4>
-                    <label>
-                      <input
-                        type="radio"
-                        name="imagePosition"
-                        value="0"
-                        onClick={(e) => {
-                          update('imagePosition', parseInt(e.target.value))
-                        }}
-                        defaultChecked={info.imagePosition === 0}
-                      />{' '}
-                      Bottom
-                    </label>
-                    <br />
-                    <label>
-                      <input
-                        type="radio"
-                        name="imagePosition"
-                        value="1"
-                        onClick={(e) => {
-                          update('imagePosition', parseInt(e.target.value))
-                        }}
-                        defaultChecked={info.imagePosition === 1}
-                      />{' '}
-                      Right
-                    </label>
-                  </div>
-                  <div className="mb-3">
-                    <h4>Image type</h4>
-                    <label>
-                      <input
-                        type="radio"
-                        name="imageType"
-                        value="0"
-                        onClick={(e) => {
-                          update('imageType', parseInt(e.target.value))
-                        }}
-                        defaultChecked={info.imageType === 0}
-                      />{' '}
-                      Mountain bird
-                    </label>
-                    <br />
-                    <label>
-                      <input
-                        type="radio"
-                        name="imageType"
-                        value="1"
-                        onClick={(e) => {
-                          update('imageType', parseInt(e.target.value))
-                        }}
-                        defaultChecked={info.imageType === 1}
-                      />{' '}
-                      Big A
-                    </label>
-                  </div>
-                  <div>
-                    <h4>Tagline</h4>
-                    <label>
-                      <input
-                        type="checkbox"
-                        onChange={() => {
-                          update('tagLine', !info.tagLine)
-                        }}
-                        value="1"
-                        checked={info.tagLine}
-                      />{' '}
-                      Include tag line
-                    </label>
-                  </div>
-                </div>
-                <div className="col-sm-6">
-                  <h4>Sizing</h4>
-                  <p>
-                    You can shift and resize your department name in the graphic
-                    by using the sliders below.
-                  </p>
-                  <div>
-                    <table className="table table-striped">
-                      <tbody>
-                        <tr>
-                          <td>
-                            Font size: {info.fontSize}
-                            <br />
-                            <Slider
-                              axis="x"
-                              x={info.fontSize}
-                              onChange={(e) => {
-                                update('fontSize', e.x)
-                              }}
-                            />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            Top space: {info.fontTop}
-                            <br />
-                            <Slider
-                              axis="x"
-                              x={info.fontTop}
-                              onChange={(e) => {
-                                update('fontTop', e.x)
-                              }}
-                            />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            Line height: {info.lineHeight}
-                            <br />
-                            <Slider
-                              axis="x"
-                              x={info.lineHeight}
-                              onChange={(e) => {
-                                update('lineHeight', e.x)
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <SignatureView {...{sig, info, sigImage}} />
-            </td>
-          </tr>
           <tr>
             <td>
               <h2>Step 4</h2>

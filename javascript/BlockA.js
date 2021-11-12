@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const SigImage = ({sigImage, fontSize, department, lineHeight}) => {
+const BlockA = ({sigImage, fontSize, department, lineHeight}) => {
   return (
     <div ref={sigImage}>
       <div
@@ -14,7 +14,7 @@ const SigImage = ({sigImage, fontSize, department, lineHeight}) => {
           fontSize,
         }}>
         <div>
-          <img src="./block-a.png" style={{width: '120px'}} />
+          <img src="./img/block-a.png" style={{width: '120px'}} />
         </div>
         {department.split('\n').map((item, key) => {
           return (
@@ -29,7 +29,7 @@ const SigImage = ({sigImage, fontSize, department, lineHeight}) => {
   )
 }
 
-SigImage.propTypes = {
+BlockA.propTypes = {
   sigImage: PropTypes.object,
   fontSize: PropTypes.number,
   department: PropTypes.string,
@@ -37,4 +37,4 @@ SigImage.propTypes = {
   lineHeight: PropTypes.number,
 }
 
-export default SigImage
+export default BlockA

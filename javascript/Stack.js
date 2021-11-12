@@ -1,30 +1,13 @@
 'use strict'
 import React from 'react'
 import PropTypes from 'prop-types'
-import SigImage from './SigImage'
-import BlockA from './BlockA'
+import Image from './Image'
 import CET from './CET'
+import SigText from './SigText'
 
-const Stack = ({info, sig, sigImage}) => {
-  const {
-    position,
-    email,
-    phone,
-    roomType,
-    room,
-    building,
-    box,
-    site,
-    address,
-    department,
-    name,
-    lineHeight,
-    fontSize,
-    fontTop,
-    imagePosition,
-    imageType,
-    tagLine,
-  } = info
+const Stack = ({info, sig}) => {
+  const {site, tagLine} = info
+
   return (
     <div
       style={{
@@ -34,49 +17,7 @@ const Stack = ({info, sig, sigImage}) => {
       }}
       ref={sig}>
       <div style={{width: '300px'}}>
-        <div
-          style={{
-            fontFamily: 'Times New Roman, Times, Serif',
-            fontSize: '17px',
-          }}>
-          <strong>{name ? name : 'Example Name'}</strong>
-        </div>
-        <div
-          style={{
-            fontFamily: 'Helvetica, Arial, Sans-Serif',
-            fontSize: '13px',
-            color: '#444',
-            marginBottom: '10px',
-          }}>
-          <em>{position ? position : 'Position title'}</em>
-          <br />
-          <a href="https://appstate.edu" style={{textDecoration: 'unset'}}>
-            <span style={{color: '#FFCC00'}}>Appalachian State University</span>
-          </a>
-          <br />
-          Email:{' '}
-          <a
-            style={{textDecoration: 'unset', color: '#444'}}
-            href={`mailto:${email}@appstate.edu`}>
-            {email ? email + '@appstate.edu' : 'your-username@appstate.edu'}
-          </a>
-          <br />
-          Phone:{' '}
-          <a
-            style={{textDecoration: 'unset', color: '#444'}}
-            href={`tel:+1828262${phone}`}>
-            (828) 262-{phone ? phone : '####'}
-          </a>
-          <br />
-          Office: {roomType} {room ? room : '###'}, {building}
-          <br />
-          Address: {box > 0 ? `PO Box ${box},` : null} {address}
-          <br />
-          <a style={{textDecoration: 'unset'}} href={`https://${site}`}>
-            {site ? site : 'department.appstate.edu'}
-          </a>
-        </div>
-
+        <SigText {...{info}} />
         <div>
           <a
             style={{
@@ -86,31 +27,7 @@ const Stack = ({info, sig, sigImage}) => {
               marginBottom: '6px',
             }}
             href={`https://${site}`}>
-            {imageType === 0 ? (
-              <SigImage
-                {...{
-                  sigImage,
-                  fontSize,
-                  department,
-                  fontTop,
-                  lineHeight,
-                  imagePosition,
-                  imageType,
-                }}
-              />
-            ) : (
-              <BlockA
-                {...{
-                  sigImage,
-                  fontSize,
-                  department,
-                  fontTop,
-                  lineHeight,
-                  imagePosition,
-                  imageType,
-                }}
-              />
-            )}
+            <Image info={info} />
           </a>
           {tagLine && <CET />}
         </div>

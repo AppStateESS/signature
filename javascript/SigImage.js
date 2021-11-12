@@ -25,7 +25,7 @@ const SigImage = ({sigImage, fontSize, department, fontTop, lineHeight}) => {
           )
         })}
       </div>
-      <img src="./swoop.png" />
+      <img src="./img/swoop.png" />
     </div>
   )
 }
