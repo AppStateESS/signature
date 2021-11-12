@@ -285,15 +285,23 @@ const Signature = () => {
         </div>
         <SignatureView {...{sig, info, sigImage}} />
       </div>
-
+      <hr />
       <table className="table table">
         <tbody>
           <tr>
-            <td>
+            <td style={{width: '50%'}}>
               <h2>Step 4</h2>
               <p>Do the following:</p>
               <ol>
-                <li>Click the Make image button to the right.</li>
+                <li>
+                  Click this{' '}
+                  <button
+                    className="btn btn-primary btn-sm"
+                    onClick={makeImage}>
+                    Make image
+                  </button>{' '}
+                  button to the right.
+                </li>
                 <li>
                   A copy of the Mountain Bird or Block A graphic will appear.
                   Right click on the image.
@@ -306,12 +314,9 @@ const Signature = () => {
               </ol>
             </td>
             <td>
-              <button
-                className="btn btn-primary float-left"
-                onClick={makeImage}>
-                Make image
-              </button>
-              <div className="m-5">{imageDownload}</div>
+              <div className="d-flex justify-content-center align-items-center">
+                {imageDownload}
+              </div>
             </td>
           </tr>
           <tr>

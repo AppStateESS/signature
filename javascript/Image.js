@@ -5,16 +5,9 @@ import BlockA from './BlockA'
 import Vaccine from './Vaccine'
 import PropTypes from 'prop-types'
 
-const Image = ({info}) => {
-  const {
-    imageType,
-    sigImage,
-    fontSize,
-    department,
-    fontTop,
-    lineHeight,
-    imagePosition,
-  } = info
+const Image = ({info, sigImage}) => {
+  const {imageType, fontSize, department, fontTop, lineHeight, imagePosition} =
+    info
   switch (imageType) {
     case 0:
       return <span></span>

@@ -5,7 +5,7 @@ import Image from './Image'
 import CET from './CET'
 import SigText from './SigText'
 
-const Float = ({info, sig}) => {
+const Float = ({info, sig, sigImage}) => {
   const {site, tagLine} = info
   return (
     <div
@@ -36,7 +36,7 @@ const Float = ({info, sig}) => {
                     marginBottom: '6px',
                   }}
                   href={`https://${site}`}>
-                  <Image info={info} />
+                  <Image info={info} sigImage={sigImage} />
                 </a>
                 {tagLine && <CET />}
               </div>

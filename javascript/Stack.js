@@ -5,7 +5,7 @@ import Image from './Image'
 import CET from './CET'
 import SigText from './SigText'
 
-const Stack = ({info, sig}) => {
+const Stack = ({info, sig, sigImage}) => {
   const {site, tagLine} = info
 
   return (
@@ -27,7 +27,7 @@ const Stack = ({info, sig}) => {
               marginBottom: '6px',
             }}
             href={`https://${site}`}>
-            <Image info={info} />
+            <Image info={info} sigImage={sigImage} />
           </a>
           {tagLine && <CET />}
         </div>
