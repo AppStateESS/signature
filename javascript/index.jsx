@@ -1,5 +1,5 @@
 'use strict'
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import Buildings from './Buildings'
 import ReactDOM from 'react-dom'
 import domtoimage from 'dom-to-image'
@@ -43,6 +43,10 @@ const Signature = () => {
     info[varname] = value
     setInfo({...info})
   }
+
+  useEffect(() => {
+    update('lineHeight', info.fontSize)
+  }, [info.fontSize])
 
   /**
    * Controls the large width of the float box

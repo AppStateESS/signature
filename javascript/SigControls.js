@@ -241,6 +241,7 @@ const SigControls = ({update, info, floatWidth, blockWidth}) => {
                   <br />
                   <Slider
                     axis="x"
+                    xmin={info.fontSize}
                     x={info.lineHeight}
                     onChange={(e) => {
                       update('lineHeight', e.x)
