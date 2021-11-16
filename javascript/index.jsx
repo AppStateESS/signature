@@ -85,6 +85,8 @@ const Signature = () => {
       selection.removeAllRanges()
       selection.addRange(range)
     }
+
+    document.execCommand('copy')
   }
 
   const removeRender = () => {
@@ -167,8 +169,8 @@ const Signature = () => {
                     Google will not let you paste the signature with the
                     graphic, so follow the steps below as a workaround.
                   </p>
-                  <ol>
-                    <li>
+                  <ol className="list-group list-group-flush">
+                    <li className="list-group-item">
                       Substitute the image placement with a flag by clicking
                       this button:{' '}
                       <button
@@ -177,20 +179,24 @@ const Signature = () => {
                         Make [Paste image here] target
                       </button>
                     </li>
-                    <li>
-                      Click this button to highlight the signature:{' '}
+                    <li className="list-group-item">
+                      Click this button:{' '}
                       <button
                         className="btn btn-sm btn-primary"
                         onClick={selectAll}>
-                        Select all
+                        Select all and Copy to Clipboard
                       </button>
                     </li>
-                    <li>Your signature above should now be highlighted.</li>
-                    <li>
-                      Key <code>CTRL-C</code> to copy the signature information
-                      to your clipboard.
+                    <li className="list-group-item">
+                      Your signature above should now be highlighted and copied.
                     </li>
                   </ol>
+                  <div className="alert alert-info">
+                    Note: If the signature doesn&apos;t appear when you paste
+                    (CTRL-V), use keys
+                    <br /> <code>CTRL-C</code> to manually copy the signature
+                    information after it is highlighted.
+                  </div>
                 </div>
                 <div className="col-sm-4">
                   <img src="./img/paste-image.jpg" className="img-fluid" />
