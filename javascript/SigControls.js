@@ -1,26 +1,34 @@
 'use strict'
-import React, {useState} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Slider from 'react-input-slider'
 
-const SigControls = ({update, info}) => {
+const SigControls = ({update, info, floatWidth, blockWidth}) => {
+  const bigAWidth = Math.floor(blockWidth * 0.4)
   const setPosition = (position) => {
     const positionInt = parseInt(position.target.value)
     update('imagePosition', positionInt)
     switch (positionInt) {
       // bottom
       case 0:
-        update('imageWidth', info.imageType === 2 ? 150 : 300)
+        update('imageWidth', info.imageType === 2 ? bigAWidth : blockWidth)
         update('fontSize', 30)
         break
       // right
       case 1:
-        update('imageWidth', info.imageType === 2 ? 150 : 300)
-        update('fontSize', 30)
+        update(
+          'imageWidth',
+          info.imageType === 2 ? bigAWidth : Math.floor(floatWidth / 2)
+        )
+        update('fontSize', 25)
         break
       // split bottom
       case 2:
-        update('imageWidth', info.imageType === 2 ? 75 : 150)
+        update(
+          'imageWidth',
+          info.imageType === 2 ? Math.floor(bigAWidth / 2) : bigAWidth
+        )
+
         update('fontSize', 18)
         break
     }
@@ -32,15 +40,24 @@ const SigControls = ({update, info}) => {
     switch (imageTypeInt) {
       // bird
       case 1:
-        update('imageWidth', info.imagePosition === 2 ? 150 : 300)
+        update(
+          'imageWidth',
+          info.imagePosition === 2 ? Math.floor(blockWidth / 2) : blockWidth
+        )
         break
       // Big A
       case 2:
-        update('imageWidth', info.imagePosition === 2 ? 75 : 150)
+        update(
+          'imageWidth',
+          info.imagePosition === 2 ? Math.floor(bigAWidth / 2) : bigAWidth
+        )
         break
       // Vaccinate
       case 3:
-        update('imageWidth', info.imagePosition === 2 ? 200 : 300)
+        update(
+          'imageWidth',
+          info.imagePosition === 2 ? Math.floor(blockWidth / 2) : blockWidth
+        )
         break
     }
   }
@@ -239,6 +256,11 @@ const SigControls = ({update, info}) => {
   )
 }
 
-SigControls.propTypes = {info: PropTypes.object, update: PropTypes.func}
+SigControls.propTypes = {
+  info: PropTypes.object,
+  update: PropTypes.func,
+  floatWidth: PropTypes.number,
+  blockWidth: PropTypes.number,
+}
 
 export default SigControls

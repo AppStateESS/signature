@@ -6,24 +6,48 @@ import Stack from './Stack'
 import StackSplit from './StackSplit'
 import Float from './Float'
 
-const SignatureView = ({sig, info, sigImage}) => {
+const SignatureView = ({sig, info, sigImage, floatWidth, blockWidth}) => {
+  const floatPadding = 6
+  const blockPadding = 6
+  const width = blockWidth + floatPadding * 2
   switch (info.imagePosition) {
     case 0:
       return (
-        <div className="d-flex justify-content-center mx-auto">
-          <Stack {...{info, sig, sigImage}} />
+        <div
+          className="d-flex justify-content-center mx-auto"
+          style={{
+            border: '1px solid #333',
+            padding: blockPadding.toString() + 'px',
+            width: width.toString() + 'px',
+          }}
+          ref={sig}>
+          <Stack {...{info, sigImage}} />
         </div>
       )
     case 1:
       return (
-        <div className="d-flex justify-content-center mx-auto">
-          <Float {...{info, sig, sigImage}} />
+        <div
+          className="d-flex justify-content-center mx-auto"
+          style={{
+            border: '1px solid #333',
+            padding: floatPadding.toString() + 'px',
+            width: (floatWidth + floatPadding * 2).toString() + 'px',
+          }}
+          ref={sig}>
+          <Float {...{info, sigImage, floatWidth}} />
         </div>
       )
     case 2:
       return (
-        <div className="d-flex justify-content-center mx-auto">
-          <StackSplit {...{info, sig, sigImage}} />
+        <div
+          className="d-flex justify-content-center mx-auto"
+          style={{
+            border: '1px solid #333',
+            padding: '6px',
+            width: width.toString() + 'px',
+          }}
+          ref={sig}>
+          <StackSplit {...{info, sigImage}} />
         </div>
       )
   }
@@ -33,6 +57,8 @@ SignatureView.propTypes = {
   sig: PropTypes.object,
   info: PropTypes.object,
   sigImage: PropTypes.object,
+  floatWidth: PropTypes.number,
+  blockWidth: PropTypes.number,
 }
 
 export default SignatureView

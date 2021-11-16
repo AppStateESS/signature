@@ -5,47 +5,41 @@ import Image from './Image'
 import CET from './CET'
 import SigText from './SigText'
 
-const StackSplit = ({info, sig, sigImage}) => {
+const StackSplit = ({info, sigImage}) => {
   const {site, tagLine} = info
 
   return (
-    <div
-      style={{
-        border: '1px solid #333',
-        padding: '6px',
-        width: '312px',
-      }}
-      ref={sig}>
-      <div style={{width: '300px'}}>
-        <SigText {...{info}} />
-        <table style={{width: '100%'}} cellPadding="4">
-          <tbody>
-            <tr>
-              <td style={{width: '50%', textAlign: 'center'}}>
-                <div style={{position: 'relative'}}>
-                  <a
-                    style={{
-                      textDecoration: 'unset',
-                      color: '#000',
-                      display: 'block',
-                      marginBottom: '6px',
-                    }}
-                    href={`https://${site}`}>
-                    <Image
-                      info={info}
-                      sigImage={sigImage}
-                      imageWidth={info.imageWidth}
-                    />
-                  </a>
-                </div>
-              </td>
-              <td style={{borderLeft: '1px #aaa solid'}}>
-                <div>{tagLine && <CET />}</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div style={{width: '316px', maxWidth: '316px'}}>
+      <SigText {...{info}} />
+      <table style={{width: '316px', maxWidth: '300px'}} cellPadding="4">
+        <tbody>
+          <tr>
+            <td style={{maxWidth: '150px', textAlign: 'center'}} width="150px">
+              <div style={{position: 'relative'}}>
+                <a
+                  style={{
+                    textDecoration: 'unset',
+                    color: '#000',
+                    display: 'block',
+                    marginBottom: '6px',
+                  }}
+                  href={`https://${site}`}>
+                  <Image
+                    info={info}
+                    sigImage={sigImage}
+                    imageWidth={info.imageWidth}
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              style={{maxWidth: '150px', borderLeft: '1px #aaa solid'}}
+              width="150px">
+              <div style={{maxWidth: '150px'}}>{tagLine && <CET />}</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   )
 }

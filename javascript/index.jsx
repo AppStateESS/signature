@@ -29,7 +29,7 @@ const Signature = () => {
     imageDownload: null,
     imagePosition: 0,
     imageType: 1,
-    imageWidth: 300,
+    imageWidth: 250,
     tagLine: true,
   }
 
@@ -43,6 +43,12 @@ const Signature = () => {
     info[varname] = value
     setInfo({...info})
   }
+
+  /**
+   * Controls the large width of the float box
+   */
+  const floatWidth = 540
+  const blockWidth = 300
 
   const sig = useRef()
   const sigImage = useRef()
@@ -112,8 +118,8 @@ const Signature = () => {
         {' '}
         <h2>Step 3</h2>
         <p>Review the look of your signature.</p>
-        <SigControls {...{update, info}} />
-        <SignatureView {...{sig, info, sigImage}} />
+        <SigControls {...{update, info, floatWidth, blockWidth}} />
+        <SignatureView {...{sig, info, sigImage, floatWidth, blockWidth}} />
       </div>
       <hr />
       <table className="table table">

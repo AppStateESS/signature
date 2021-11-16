@@ -5,36 +5,24 @@ import Image from './Image'
 import CET from './CET'
 import SigText from './SigText'
 
-const Stack = ({info, sig, sigImage}) => {
+const Stack = ({info, sigImage}) => {
   const {site, tagLine} = info
 
   return (
-    <div
-      style={{
-        border: '1px solid #333',
-        padding: '6px',
-        width: '312px',
-      }}
-      ref={sig}>
-      <div style={{width: '300px'}}>
-        <SigText {...{info}} />
-        <div>
-          <a
-            style={{
-              textDecoration: 'unset',
-              color: '#000',
-              display: 'block',
-              marginBottom: '6px',
-            }}
-            href={`https://${site}`}>
-            <Image
-              info={info}
-              sigImage={sigImage}
-              imageWidth={info.imageWidth}
-            />
-          </a>
-          {tagLine && <CET />}
-        </div>
+    <div style={{width: '316px', maxWidth: '316px'}}>
+      <SigText {...{info}} />
+      <div>
+        <a
+          style={{
+            textDecoration: 'unset',
+            color: '#000',
+            display: 'block',
+            marginBottom: '6px',
+          }}
+          href={`https://${site}`}>
+          <Image info={info} sigImage={sigImage} imageWidth={info.imageWidth} />
+        </a>
+        {tagLine && <CET />}
       </div>
     </div>
   )
