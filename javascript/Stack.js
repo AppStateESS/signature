@@ -17,6 +17,7 @@ const Stack = ({info, sigImage}) => {
             textDecoration: 'unset',
             color: '#000',
             display: 'block',
+            textAlign: 'center',
             marginBottom: '6px',
           }}
           href={`https://${site}`}>
