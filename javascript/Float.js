@@ -14,24 +14,24 @@ const Float = ({info, sigImage, floatWidth}) => {
     <table
       width={tableWidth.toString() + 'px'}
       style={{
-        width: tableWidth.toString + 'px',
-        maxWidth: tableWidth.toString + 'px',
+        width: tableWidth.toString() + 'px',
+        maxWidth: tableWidth.toString() + 'px',
       }}
       cellPadding={`${cellPadding.toString()}px`}>
       <tbody>
         <tr>
           <td
             style={{
-              width: cellWidth.toString + 'px',
-              maxWidth: cellWidth.toString + 'px',
+              width: cellWidth.toString() + 'px',
+              maxWidth: cellWidth.toString() + 'px',
               verticalAlign: 'top',
             }}>
             <SigText {...{info}} />
           </td>
           <td
             style={{
-              width: cellWidth.toString + 'px',
-              maxWidth: cellWidth.toString + 'px',
+              width: cellWidth.toString() + 'px',
+              maxWidth: cellWidth.toString() + 'px',
               borderLeft: '1px solid #aaa',
               textAlign: 'center',
               verticalAlign: 'center',

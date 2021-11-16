@@ -1,6 +1,6 @@
 {
   "name": "signature",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Create a signature block for email clients",
   "main": "index.js",
   "scripts": {
