@@ -219,7 +219,7 @@ const Signature = () => {
                     <li>Name it something snazzy.</li>
                     <li>
                       The cursor will be in the editor box. Use{' '}
-                      <code>CTRL-P</code> to paste in the signature.
+                      <code>CTRL-V</code> to paste in the signature.
                     </li>
                     <li>
                       Now you need to get the image in. Highlight the [Paste
