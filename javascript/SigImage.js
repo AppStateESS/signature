@@ -2,13 +2,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const SigImage = ({sigImage, fontSize, department, fontTop, lineHeight}) => {
+const SigImage = ({
+  sigImage,
+  fontSize,
+  department,
+  fontTop,
+  lineHeight,
+  imageWidth,
+}) => {
   return (
     <div style={{position: 'relative'}} ref={sigImage}>
       <div
         style={{
-          width: '300px',
-          height: '63px',
+          width: '100%',
           position: 'absolute',
           textAlign: 'center',
           fontFamily: 'Times New Roman, Times, Serif',
@@ -25,7 +31,12 @@ const SigImage = ({sigImage, fontSize, department, fontTop, lineHeight}) => {
           )
         })}
       </div>
-      <img src="./img/swoop.png" />
+      <div style={{textAlign: 'center'}}>
+        <img
+          src="./img/swoop.png"
+          style={{width: imageWidth.toString() + 'px'}}
+        />
+      </div>
     </div>
   )
 }
@@ -36,6 +47,7 @@ SigImage.propTypes = {
   department: PropTypes.string,
   fontTop: PropTypes.number,
   lineHeight: PropTypes.number,
+  imageWidth: PropTypes.number,
 }
 
 export default SigImage

@@ -2,15 +2,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Vaccine = ({sigImage}) => {
+const Vaccine = ({sigImage, imageWidth}) => {
   return (
     <div ref={sigImage}>
       <div
         style={{
-          width: '300px',
           textAlign: 'center',
         }}>
-        <img src="./img/vaccinate.jpg" style={{width: '300px'}} />
+        <img
+          src="./img/vaccinate.jpg"
+          style={{width: imageWidth.toString() + 'px'}}
+        />
       </div>
     </div>
   )
@@ -22,6 +24,7 @@ Vaccine.propTypes = {
   department: PropTypes.string,
   fontTop: PropTypes.number,
   lineHeight: PropTypes.number,
+  imageWidth: PropTypes.number,
 }
 
 export default Vaccine

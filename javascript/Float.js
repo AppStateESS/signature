@@ -24,7 +24,7 @@ const Float = ({info, sig, sigImage}) => {
             <td
               style={{
                 width: '50%',
-                borderLeft: '1px solid black',
+                borderLeft: '1px solid #aaa',
                 verticalAlign: 'center',
               }}>
               <div>
@@ -36,7 +36,11 @@ const Float = ({info, sig, sigImage}) => {
                     marginBottom: '6px',
                   }}
                   href={`https://${site}`}>
-                  <Image info={info} sigImage={sigImage} />
+                  <Image
+                    info={info}
+                    sigImage={sigImage}
+                    imageWidth={info.imageWidth}
+                  />
                 </a>
                 {tagLine && <CET />}
               </div>

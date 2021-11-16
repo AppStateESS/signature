@@ -5,7 +5,7 @@ import BlockA from './BlockA'
 import Vaccine from './Vaccine'
 import PropTypes from 'prop-types'
 
-const Image = ({info, sigImage}) => {
+const Image = ({info, sigImage, imageWidth}) => {
   const {imageType, fontSize, department, fontTop, lineHeight, imagePosition} =
     info
   switch (imageType) {
@@ -22,6 +22,7 @@ const Image = ({info, sigImage}) => {
             lineHeight,
             imagePosition,
             imageType,
+            imageWidth,
           }}
         />
       )
@@ -36,6 +37,7 @@ const Image = ({info, sigImage}) => {
             lineHeight,
             imagePosition,
             imageType,
+            imageWidth,
           }}
         />
       )
@@ -50,12 +52,13 @@ const Image = ({info, sigImage}) => {
             lineHeight,
             imagePosition,
             imageType,
+            imageWidth,
           }}
         />
       )
   }
 }
 
-Image.propTypes = {info: PropTypes.object}
+Image.propTypes = {info: PropTypes.object, sigImage: PropTypes.object}
 
 export default Image

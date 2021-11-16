@@ -27,7 +27,11 @@ const Stack = ({info, sig, sigImage}) => {
               marginBottom: '6px',
             }}
             href={`https://${site}`}>
-            <Image info={info} sigImage={sigImage} />
+            <Image
+              info={info}
+              sigImage={sigImage}
+              imageWidth={info.imageWidth}
+            />
           </a>
           {tagLine && <CET />}
         </div>

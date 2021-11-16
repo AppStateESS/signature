@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 import domtoimage from 'dom-to-image'
 import Form from './Form'
 import SignatureView from './SignatureView'
-import Slider from 'react-input-slider'
+import SigControls from './SigControls'
 
 const Signature = () => {
   const defaultInfo = {
@@ -29,6 +29,7 @@ const Signature = () => {
     imageDownload: null,
     imagePosition: 0,
     imageType: 1,
+    imageWidth: 300,
     tagLine: true,
   }
 
@@ -111,178 +112,7 @@ const Signature = () => {
         {' '}
         <h2>Step 3</h2>
         <p>Review the look of your signature.</p>
-        <div className="row">
-          <div className="col-sm-3">
-            <div className="mb-3">
-              <strong>Position</strong>
-              <br />
-              <label>
-                <input
-                  type="radio"
-                  name="imagePosition"
-                  value="0"
-                  onClick={(e) => {
-                    update('imagePosition', parseInt(e.target.value))
-                  }}
-                  defaultChecked={info.imagePosition === 0}
-                />{' '}
-                Bottom
-              </label>
-              <br />
-              <label>
-                <input
-                  type="radio"
-                  name="imagePosition"
-                  value="1"
-                  onClick={(e) => {
-                    update('imagePosition', parseInt(e.target.value))
-                  }}
-                  defaultChecked={info.imagePosition === 1}
-                />{' '}
-                Right
-              </label>
-            </div>
-            <div className="mb-3">
-              <strong>Image type</strong>
-              <br />
-              <label>
-                <input
-                  type="radio"
-                  name="imageType"
-                  value="0"
-                  onClick={(e) => {
-                    update('imageType', parseInt(e.target.value))
-                  }}
-                  defaultChecked={info.imageType === 0}
-                />{' '}
-                None
-              </label>
-              <br />
-              <label>
-                <input
-                  type="radio"
-                  name="imageType"
-                  value="1"
-                  onClick={(e) => {
-                    update('imageType', parseInt(e.target.value))
-                  }}
-                  defaultChecked={info.imageType === 1}
-                />{' '}
-                Mountain bird
-              </label>
-              <br />
-              <label>
-                <input
-                  type="radio"
-                  name="imageType"
-                  value="2"
-                  onClick={(e) => {
-                    update('imageType', parseInt(e.target.value))
-                  }}
-                  defaultChecked={info.imageType === 2}
-                />{' '}
-                Big A
-              </label>
-              <br />
-              <label>
-                <input
-                  type="radio"
-                  name="imageType"
-                  value="3"
-                  onClick={(e) => {
-                    update('imageType', parseInt(e.target.value))
-                  }}
-                  defaultChecked={info.imageType === 3}
-                />{' '}
-                Vaccinated
-              </label>
-            </div>
-          </div>
-          <div className="col-sm-3">
-            <div className="mb-3">
-              <strong>Department</strong>
-              <br />
-              <label>
-                <input
-                  type="checkbox"
-                  onChange={() => {
-                    update('showDepartment', !info.showDepartment)
-                  }}
-                  value="1"
-                  checked={info.showDepartment}
-                />{' '}
-                Show under position
-              </label>
-            </div>
-            <div>
-              <strong>Tagline</strong>
-              <br />
-              <label>
-                <input
-                  type="checkbox"
-                  onChange={() => {
-                    update('tagLine', !info.tagLine)
-                  }}
-                  value="1"
-                  checked={info.tagLine}
-                />{' '}
-                Include tag line
-              </label>
-            </div>
-          </div>
-          <div className="col-sm-6">
-            <strong>Sizing</strong>
-            <p>
-              You can shift and resize your department name in the graphic by
-              using the sliders below.
-            </p>
-            <div>
-              <table className="table table-striped">
-                <tbody>
-                  <tr>
-                    <td>
-                      Font size: {info.fontSize}
-                      <br />
-                      <Slider
-                        axis="x"
-                        x={info.fontSize}
-                        onChange={(e) => {
-                          update('fontSize', e.x)
-                        }}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Top space: {info.fontTop}
-                      <br />
-                      <Slider
-                        axis="x"
-                        x={info.fontTop}
-                        onChange={(e) => {
-                          update('fontTop', e.x)
-                        }}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Line height: {info.lineHeight}
-                      <br />
-                      <Slider
-                        axis="x"
-                        x={info.lineHeight}
-                        onChange={(e) => {
-                          update('lineHeight', e.x)
-                        }}
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        <SigControls {...{update, info}} />
         <SignatureView {...{sig, info, sigImage}} />
       </div>
       <hr />

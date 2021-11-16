@@ -8,6 +8,7 @@ const CET = () => {
         fontSize: '22px',
         marginTop: '4px',
         textAlign: 'center',
+        lineHeight: '24px',
       }}>
       <a
         style={{textDecoration: 'unset', color: 'black'}}
