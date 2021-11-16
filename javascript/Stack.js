@@ -5,13 +5,21 @@ import Image from './Image'
 import CET from './CET'
 import SigText from './SigText'
 
-const Stack = ({info, sigImage}) => {
+const Stack = ({info, sigImage, blockWidth}) => {
   const {site, tagLine} = info
 
   return (
-    <div style={{width: '316px', maxWidth: '316px'}}>
+    <div
+      style={{
+        width: blockWidth.toString() + 'px',
+        maxWidth: blockWidth.toString() + 'px',
+      }}>
       <SigText {...{info}} />
-      <div>
+      <div
+        style={{
+          width: blockWidth.toString() + 'px',
+          maxWidth: blockWidth.toString() + 'px',
+        }}>
         <a
           style={{
             textDecoration: 'unset',
@@ -33,6 +41,7 @@ Stack.propTypes = {
   sig: PropTypes.object,
   info: PropTypes.object,
   sigImage: PropTypes.object,
+  blockWidth: PropTypes.number,
 }
 
 export default Stack

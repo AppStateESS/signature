@@ -21,7 +21,7 @@ const SignatureView = ({sig, info, sigImage, floatWidth, blockWidth}) => {
             width: width.toString() + 'px',
           }}
           ref={sig}>
-          <Stack {...{info, sigImage}} />
+          <Stack {...{info, sigImage, blockWidth}} />
         </div>
       )
     case 1:
