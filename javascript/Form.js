@@ -1,16 +1,15 @@
 'use strict'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Buildings from './Buildings'
 
-const buildingOptions = Buildings.map((value, key) => {
-  return (
-    <option key={key} value={key}>
-      {value.name}
-    </option>
-  )
-})
-const Form = ({info, update}) => {
+const Form = ({info, update, buildings}) => {
+  const buildingOptions = buildings.map((value, key) => {
+    return (
+      <option key={key} value={key}>
+        {value.name}
+      </option>
+    )
+  })
   return (
     <div className="row">
       <div className="col-sm-6">
@@ -127,8 +126,8 @@ const Form = ({info, update}) => {
                 <select
                   className="form-control"
                   onChange={(e) => {
-                    update('building', Buildings[e.target.value].name)
-                    update('address', Buildings[e.target.value].address)
+                    update('building', buildings[e.target.value].name)
+                    update('address', buildings[e.target.value].address)
                   }}>
                   {buildingOptions}
                 </select>
@@ -176,6 +175,10 @@ const Form = ({info, update}) => {
   )
 }
 
-Form.propTypes = {info: PropTypes.object, update: PropTypes.func}
+Form.propTypes = {
+  info: PropTypes.object,
+  update: PropTypes.func,
+  buildings: PropTypes.array,
+}
 
 export default Form

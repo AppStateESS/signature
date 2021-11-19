@@ -1,4 +1,4 @@
-const Buildings = [
+const buildings = [
   {
     name: 'Appalachian Hall',
     address: '214 Locust Street, Boone, NC 28608',
@@ -7,6 +7,10 @@ const Buildings = [
   {
     name: 'Child Development Center',
     address: '538 Popular Grove Road, Boone, NC 28607',
+  },
+  {
+    name: 'D.D. Dougherty Hall',
+    address: '226 Joyce Lawrence Lane, Boone, NC 28607',
   },
   {
     name: 'I.G Greer',
@@ -27,5 +31,3 @@ const Buildings = [
     address: '228 Stadium Drive, Boone, NC 28608',
   },
 ]
-
-export default Buildings

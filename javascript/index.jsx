@@ -1,13 +1,15 @@
 'use strict'
 import React, {useState, useRef, useEffect} from 'react'
-import Buildings from './Buildings'
 import ReactDOM from 'react-dom'
 import domtoimage from 'dom-to-image'
 import Form from './Form'
 import SignatureView from './SignatureView'
 import SigControls from './SigControls'
+import PropTypes from 'prop-types'
 
-const Signature = () => {
+/* global buildings */
+
+const Signature = ({buildings}) => {
   const defaultInfo = {
     department: 'Example department',
     showDepartment: false,
@@ -19,8 +21,8 @@ const Signature = () => {
     roomType: 'Room',
     room: '',
     box: 0,
-    building: Buildings[0].name,
-    address: Buildings[0].address,
+    building: buildings[0].name,
+    address: buildings[0].address,
     site: '',
     sigSource: '',
     fontSize: 30,
@@ -119,7 +121,7 @@ const Signature = () => {
           Step 3.
         </p>
       </div>
-      <Form {...{info, update}} />
+      <Form {...{info, update, buildings}} />
       <div>
         {' '}
         <h2>Step 3</h2>
@@ -265,5 +267,9 @@ const Signature = () => {
     </div>
   )
 }
+Signature.propTypes = {buildings: PropTypes.array}
 
-ReactDOM.render(<Signature />, document.getElementById('Signature'))
+ReactDOM.render(
+  <Signature buildings={buildings} />,
+  document.getElementById('Signature')
+)
