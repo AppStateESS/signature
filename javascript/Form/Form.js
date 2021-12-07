@@ -22,11 +22,14 @@ const Form = ({info, update, buildings}) => {
                   className="form-control"
                   type="text"
                   onChange={(e) => update('name', e.target.value)}
-                  onBlur={
+                  onBlur={() => {
                     if (info.email.length === 0) {
-                      update('email', info.name.replace(/.*\s(\w)+$/, $1))
+                      update(
+                        'email',
+                        info.name.replace(/.*\s(\w+)$/, '$1').toLowerCase()
+                      )
                     }
-                  }
+                  }}
                   value={info.name}
                 />
               </td>
@@ -65,7 +68,7 @@ const Form = ({info, update, buildings}) => {
                     if (info.site.length === 0) {
                       update(
                         'site',
-                        info.department.replaceheath(/\s/, '').toLowerCase()
+                        info.department.replace(/\s/g, '').toLowerCase()
                       )
                     }
                   }}
