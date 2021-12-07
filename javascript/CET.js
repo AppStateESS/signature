@@ -5,10 +5,10 @@ const CET = ({breakCet, tagSize}) => {
   return (
     <div
       style={{
-        fontSize: tagSize,
+        fontSize: tagSize + 'px',
         marginTop: '4px',
         textAlign: 'center',
-        lineHeight: '24px',
+        lineHeight: tagSize + 'px',
       }}>
       <a
         style={{textDecoration: 'unset', color: 'black'}}
