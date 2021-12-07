@@ -1,9 +1,10 @@
 'use strict'
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import Slider from 'react-input-slider'
 
 const SigControls = ({update, info, floatWidth, blockWidth}) => {
+  const [maxWidth, setMaxWidth] = useState(blockWidth)
   const bigAWidth = Math.floor(blockWidth * 0.4)
   const setPosition = (position) => {
     const positionInt = parseInt(position.target.value)
@@ -11,19 +12,19 @@ const SigControls = ({update, info, floatWidth, blockWidth}) => {
     switch (positionInt) {
       // bottom
       case 0:
+        setMaxWidth(blockWidth)
         update('imageWidth', info.imageType === 2 ? bigAWidth : blockWidth)
         update('fontSize', 30)
         break
       // right
       case 1:
-        update(
-          'imageWidth',
-          info.imageType === 2 ? bigAWidth : Math.floor(floatWidth / 2)
-        )
+        setMaxWidth(Math.floor(floatWidth / 2))
+        update('imageWidth', info.imageType === 2 ? bigAWidth : maxWidth)
         update('fontSize', 25)
         break
       // split bottom
       case 2:
+        setMaxWidth(Math.floor(blockWidth / 2))
         update(
           'imageWidth',
           info.imageType === 2 ? Math.floor(bigAWidth / 2) : bigAWidth
@@ -199,7 +200,7 @@ const SigControls = ({update, info, floatWidth, blockWidth}) => {
                   <Slider
                     axis="x"
                     x={info.imageWidth}
-                    xmax={300}
+                    xmax={maxWidth}
                     xmin={50}
                     onChange={(e) => {
                       update('imageWidth', e.x)
@@ -207,7 +208,7 @@ const SigControls = ({update, info, floatWidth, blockWidth}) => {
                   />
                 </td>
                 <td>
-                  Font size: {info.fontSize}
+                  Department font size: {info.fontSize}
                   <br />
                   <Slider
                     axis="x"
@@ -247,7 +248,7 @@ const SigControls = ({update, info, floatWidth, blockWidth}) => {
               </tr>
               <tr>
                 <td colSpan="2">
-                  Tag size: {info.tagSize}
+                  Tag font size: {info.tagSize}
                   <br />
                   <Slider
                     axis="x"
