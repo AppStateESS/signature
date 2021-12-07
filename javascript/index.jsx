@@ -2,9 +2,9 @@
 import React, {useState, useRef, useEffect} from 'react'
 import ReactDOM from 'react-dom'
 import domtoimage from 'dom-to-image'
-import Form from './Form'
+import Form from './Form/Form'
 import SignatureView from './SignatureView'
-import SigControls from './SigControls'
+import SigControls from './Form/SigControls'
 import PropTypes from 'prop-types'
 
 /* global buildings */
@@ -33,6 +33,7 @@ const Signature = ({buildings}) => {
     imageType: 1,
     imageWidth: 250,
     tagLine: true,
+    tagSize: 22,
   }
 
   const [info, setInfo] = useState({...defaultInfo})
@@ -53,7 +54,7 @@ const Signature = ({buildings}) => {
   /**
    * Controls the large width of the float box
    */
-  const floatWidth = 540
+  const floatWidth = 500
   const blockWidth = 300
 
   const sig = useRef()

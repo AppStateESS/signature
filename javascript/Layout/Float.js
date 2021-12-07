@@ -1,15 +1,16 @@
 'use strict'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Image from './Image'
-import CET from './CET'
-import SigText from './SigText'
+import Image from '../Image/Image'
+import CET from '../CET'
+import SigText from '../SigText'
 
 const Float = ({info, sigImage, floatWidth}) => {
   const cellPadding = 4
   const tableWidth = floatWidth + cellPadding * 2
   const cellWidth = Math.floor(floatWidth / 2)
   const {site, tagLine} = info
+  const fullUrl = site ? `${site}.appstate.edu` : 'appstate.edu'
   return (
     <table
       width={tableWidth.toString() + 'px'}
@@ -44,14 +45,14 @@ const Float = ({info, sigImage, floatWidth}) => {
                   display: 'block',
                   marginBottom: '6px',
                 }}
-                href={`https://${site}`}>
+                href={`https://${fullUrl}`}>
                 <Image
                   info={info}
                   sigImage={sigImage}
                   imageWidth={info.imageWidth}
                 />
               </a>
-              {tagLine && <CET />}
+              {tagLine && <CET tagSize={info.tagSize} />}
             </div>
           </td>
         </tr>

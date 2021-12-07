@@ -61,8 +61,12 @@ const SigText = ({info}) => {
         Address: {box > 0 ? `PO Box ${box},` : null} {address}
         <br />
         URL:{' '}
-        <a style={{textDecoration: 'unset'}} href={`https://${site}`}>
-          {site ? site : 'department.appstate.edu'}
+        <a
+          style={{textDecoration: 'unset'}}
+          href={`https://${site}.appstate.edu`}>
+          {site
+            ? site + '.appstate.edu'
+            : department.replace(/\s/g, '').toLowerCase() + '.appstate.edu'}
         </a>
       </div>
     </div>

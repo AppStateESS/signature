@@ -1,11 +1,11 @@
 'use strict'
 import React from 'react'
 
-const CET = () => {
+const CET = ({breakCet, tagSize}) => {
   return (
     <div
       style={{
-        fontSize: '22px',
+        fontSize: tagSize,
         marginTop: '4px',
         textAlign: 'center',
         lineHeight: '24px',
@@ -14,8 +14,10 @@ const CET = () => {
         style={{textDecoration: 'unset', color: 'black'}}
         href="https://studentaffairs.appstate.edu/pagesmith/49">
         <strong>
-          <span style={{color: '#888'}}>Care.</span>{' '}
-          <span style={{color: '#FFCC00'}}>Engage.</span>{' '}
+          <span style={{color: '#888'}}>Care.</span>
+          {breakCet ? <br /> : ' '}
+          <span style={{color: '#FFCC00'}}>Engage.</span>
+          {breakCet ? <br /> : ' '}
           <span>Transform.</span>
         </strong>
       </a>

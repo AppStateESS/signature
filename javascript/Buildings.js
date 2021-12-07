@@ -10,7 +10,7 @@ const buildings = [
   },
   {
     name: 'D.D. Dougherty Hall',
-    address: '226 Joyce Lawrence Lane, Boone, NC 28607',
+    address: '101 D. D. Dougherty, Boone, NC 28608',
   },
   {
     name: 'I.G Greer',

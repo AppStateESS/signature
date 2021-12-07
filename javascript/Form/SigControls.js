@@ -206,8 +206,6 @@ const SigControls = ({update, info, floatWidth, blockWidth}) => {
                     }}
                   />
                 </td>
-              </tr>
-              <tr>
                 <td>
                   Font size: {info.fontSize}
                   <br />
@@ -234,8 +232,6 @@ const SigControls = ({update, info, floatWidth, blockWidth}) => {
                     }}
                   />
                 </td>
-              </tr>
-              <tr>
                 <td>
                   Line height: {info.lineHeight}
                   <br />
@@ -245,6 +241,21 @@ const SigControls = ({update, info, floatWidth, blockWidth}) => {
                     x={info.lineHeight}
                     onChange={(e) => {
                       update('lineHeight', e.x)
+                    }}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="2">
+                  Tag size: {info.tagSize}
+                  <br />
+                  <Slider
+                    axis="x"
+                    xmin={8}
+                    xmax="40"
+                    x={info.tagSize}
+                    onChange={(e) => {
+                      update('tagSize', e.x)
                     }}
                   />
                 </td>

@@ -2,9 +2,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Stack from './Stack'
-import StackSplit from './StackSplit'
-import Float from './Float'
+import Stack from './Layout/Stack'
+import StackSplit from './Layout/StackSplit'
+import Float from './Layout/Float'
 
 const SignatureView = ({sig, info, sigImage, floatWidth, blockWidth}) => {
   const floatPadding = 6

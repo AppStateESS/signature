@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const SigImage = ({
+const Swoop = ({
   sigImage,
   fontSize,
   department,
@@ -41,7 +41,7 @@ const SigImage = ({
   )
 }
 
-SigImage.propTypes = {
+Swoop.propTypes = {
   sigImage: PropTypes.object,
   fontSize: PropTypes.number,
   department: PropTypes.string,
@@ -50,4 +50,4 @@ SigImage.propTypes = {
   imageWidth: PropTypes.number,
 }
 
-export default SigImage
+export default Swoop

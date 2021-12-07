@@ -22,6 +22,11 @@ const Form = ({info, update, buildings}) => {
                   className="form-control"
                   type="text"
                   onChange={(e) => update('name', e.target.value)}
+                  onBlur={
+                    if (info.email.length === 0) {
+                      update('email', info.name.replace(/.*\s(\w)+$/, $1))
+                    }
+                  }
                   value={info.name}
                 />
               </td>
@@ -53,9 +58,20 @@ const Form = ({info, update, buildings}) => {
               <td>Department</td>
               <td>
                 <textarea
+                  onFocus={(e) => e.target.select()}
                   className="form-control"
                   type="text"
-                  onChange={(e) => update('department', e.target.value)}
+                  onBlur={() => {
+                    if (info.site.length === 0) {
+                      update(
+                        'site',
+                        info.department.replaceheath(/\s/, '').toLowerCase()
+                      )
+                    }
+                  }}
+                  onChange={(e) => {
+                    update('department', e.target.value)
+                  }}
                   value={info.department}
                 />
               </td>
@@ -159,13 +175,15 @@ const Form = ({info, update, buildings}) => {
             <tr>
               <td>Website URL</td>
               <td>
-                <input
-                  className="form-control"
-                  type="text"
-                  onChange={(e) => update('site', e.target.value)}
-                  value={info.site}
-                  placeholder="example.appstate.edu"
-                />
+                <div className="input-group mb-3">
+                  <input
+                    className="form-control"
+                    type="text"
+                    onChange={(e) => update('site', e.target.value)}
+                    value={info.site}
+                  />
+                  <span className="input-group-text">.appstate.edu</span>
+                </div>
               </td>
             </tr>
           </tbody>

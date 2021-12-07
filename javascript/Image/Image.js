@@ -1,6 +1,6 @@
 'use strict'
 import React from 'react'
-import SigImage from './SigImage'
+import Swoop from './Swoop'
 import BlockA from './BlockA'
 import Vaccine from './Vaccine'
 import PropTypes from 'prop-types'
@@ -20,7 +20,7 @@ const Image = ({info, sigImage}) => {
       return <span></span>
     case 1:
       return (
-        <SigImage
+        <Swoop
           {...{
             sigImage,
             fontSize,
