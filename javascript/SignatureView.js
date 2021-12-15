@@ -4,61 +4,55 @@ import PropTypes from 'prop-types'
 
 import Stack from './Layout/Stack'
 import StackSplit from './Layout/StackSplit'
-import Float from './Layout/Float'
+import FloatRight from './Layout/FloatRight'
+import FloatLeft from './Layout/FloatLeft'
 
-const SignatureView = ({sig, info, sigImage, floatWidth, blockWidth}) => {
+const SignatureView = ({sig, info, sigImage}) => {
   const floatPadding = 6
   const blockPadding = 6
-  const width = blockWidth + floatPadding * 2
+  let width
+  let view
+  let padding
   switch (info.imagePosition) {
     case 0:
-      return (
-        <div
-          className="d-flex justify-content-center mx-auto"
-          style={{
-            border: '1px solid #333',
-            padding: blockPadding.toString() + 'px',
-            width: width.toString() + 'px',
-          }}
-          ref={sig}>
-          <Stack {...{info, sigImage, blockWidth}} />
-        </div>
-      )
+      view = <Stack {...{info, sigImage}} />
+      padding = blockPadding.toString() + 'px'
+      width = (info.blockSize + floatPadding * 2).toString() + 'px'
+      break
+
     case 1:
-      return (
-        <div
-          className="d-flex justify-content-center mx-auto"
-          style={{
-            border: '1px solid #333',
-            padding: floatPadding.toString() + 'px',
-            width: (floatWidth + floatPadding * 2).toString() + 'px',
-          }}
-          ref={sig}>
-          <Float {...{info, sigImage, floatWidth}} />
-        </div>
-      )
+      view = <FloatRight {...{info, sigImage}} />
+      padding = floatPadding.toString() + 'px'
+      width = (info.blockSize + floatPadding * 2).toString() + 'px'
+      break
+
     case 2:
-      return (
-        <div
-          className="d-flex justify-content-center mx-auto"
-          style={{
-            border: '1px solid #333',
-            padding: '6px',
-            width: width.toString() + 'px',
-          }}
-          ref={sig}>
-          <StackSplit {...{info, sigImage}} />
-        </div>
-      )
+      view = <StackSplit {...{info, sigImage}} />
+      padding = blockPadding.toString() + 'px'
+      width = (info.blockSize + floatPadding * 2).toString() + 'px'
+      break
+
+    case 3:
+      view = <FloatLeft {...{info, sigImage}} />
+      padding = floatPadding.toString() + 'px'
+      width = (info.blockSize + floatPadding * 2).toString() + 'px'
+      break
   }
+  return (
+    <div
+      className="d-flex justify-content-center mx-auto border "
+      style={{
+        width,
+      }}>
+      <div ref={sig}>{view}</div>
+    </div>
+  )
 }
 
 SignatureView.propTypes = {
   sig: PropTypes.object,
   info: PropTypes.object,
   sigImage: PropTypes.object,
-  floatWidth: PropTypes.number,
-  blockWidth: PropTypes.number,
 }
 
 export default SignatureView

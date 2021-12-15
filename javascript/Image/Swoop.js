@@ -34,7 +34,7 @@ const Swoop = ({
       <div style={{textAlign: 'center'}}>
         <img
           src="./img/swoop.png"
-          style={{width: imageWidth.toString() + 'px'}}
+          style={{width: imageWidth.toString() + '%'}}
         />
       </div>
     </div>

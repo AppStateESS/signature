@@ -11,7 +11,7 @@ const Vaccine = ({sigImage, imageWidth}) => {
         }}>
         <img
           src="./img/vaccinate.jpg"
-          style={{width: imageWidth.toString() + 'px'}}
+          style={{width: imageWidth.toString() + '%'}}
         />
       </div>
     </div>

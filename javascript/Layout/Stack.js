@@ -5,20 +5,20 @@ import Image from '../Image/Image'
 import CET from '../CET'
 import SigText from '../SigText'
 
-const Stack = ({info, sigImage, blockWidth}) => {
-  const {site, tagLine} = info
+const Stack = ({info, sigImage}) => {
+  const {site, tagLine, blockSize} = info
   const fullUrl = site ? `${site}.appstate.edu` : 'appstate.edu'
   return (
     <div
       style={{
-        width: blockWidth.toString() + 'px',
-        maxWidth: blockWidth.toString() + 'px',
+        width: blockSize.toString() + 'px',
+        maxWidth: blockSize.toString() + 'px',
       }}>
       <SigText {...{info}} />
       <div
         style={{
-          width: blockWidth.toString() + 'px',
-          maxWidth: blockWidth.toString() + 'px',
+          width: blockSize.toString() + 'px',
+          maxWidth: blockSize.toString() + 'px',
         }}>
         <a
           style={{
@@ -41,7 +41,7 @@ Stack.propTypes = {
   sig: PropTypes.object,
   info: PropTypes.object,
   sigImage: PropTypes.object,
-  blockWidth: PropTypes.number,
+  blockSize: PropTypes.number,
 }
 
 export default Stack

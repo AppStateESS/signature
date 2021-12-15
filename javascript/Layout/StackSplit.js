@@ -6,15 +6,15 @@ import CET from '../CET'
 import SigText from '../SigText'
 
 const StackSplit = ({info, sigImage}) => {
-  const {site, tagLine} = info
+  const {site, tagLine, blockSize} = info
   const fullUrl = site ? `${site}.appstate.edu` : 'appstate.edu'
   return (
-    <div style={{width: '316px', maxWidth: '316px'}}>
+    <div style={{width: blockSize.toString() + 'px'}}>
       <SigText {...{info}} />
-      <table style={{width: '316px', maxWidth: '300px'}} cellPadding="4">
+      <table style={{width: blockSize.toString() + 'px'}} cellPadding="4">
         <tbody>
           <tr>
-            <td style={{maxWidth: '150px', textAlign: 'center'}} width="150px">
+            <td style={{textAlign: 'center'}} width="50%">
               <div style={{position: 'relative'}}>
                 <a
                   style={{
@@ -32,10 +32,8 @@ const StackSplit = ({info, sigImage}) => {
                 </a>
               </div>
             </td>
-            <td
-              style={{maxWidth: '150px', borderLeft: '1px #aaa solid'}}
-              width="150px">
-              <div style={{maxWidth: '150px'}}>
+            <td style={{textAlign: 'center', borderLeft: '1px #aaa solid'}}>
+              <div>
                 {tagLine && <CET breakCet={true} tagSize={info.tagSize} />}
               </div>
             </td>

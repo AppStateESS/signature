@@ -1,36 +1,28 @@
 'use strict'
-import React, {useState} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Slider from 'react-input-slider'
 
-const SigControls = ({update, info, floatWidth, blockWidth}) => {
-  const [maxWidth, setMaxWidth] = useState(blockWidth)
-  const bigAWidth = Math.floor(blockWidth * 0.4)
+const SigControls = ({update, info}) => {
   const setPosition = (position) => {
     const positionInt = parseInt(position.target.value)
     update('imagePosition', positionInt)
     switch (positionInt) {
       // bottom
       case 0:
-        setMaxWidth(blockWidth)
-        update('imageWidth', info.imageType === 2 ? bigAWidth : blockWidth)
         update('fontSize', 30)
         break
-      // right
+      // float right
       case 1:
-        setMaxWidth(Math.floor(floatWidth / 2))
-        update('imageWidth', info.imageType === 2 ? bigAWidth : maxWidth)
-        update('fontSize', 25)
+        update('fontSize', 20)
         break
       // split bottom
       case 2:
-        setMaxWidth(Math.floor(blockWidth / 2))
-        update(
-          'imageWidth',
-          info.imageType === 2 ? Math.floor(bigAWidth / 2) : bigAWidth
-        )
-
         update('fontSize', 18)
+        break
+      // float left
+      case 3:
+        update('fontSize', 20)
         break
     }
   }
@@ -38,29 +30,6 @@ const SigControls = ({update, info, floatWidth, blockWidth}) => {
   const setImageType = (imageType) => {
     const imageTypeInt = parseInt(imageType.target.value)
     update('imageType', imageTypeInt)
-    switch (imageTypeInt) {
-      // bird
-      case 1:
-        update(
-          'imageWidth',
-          info.imagePosition === 2 ? Math.floor(blockWidth / 2) : blockWidth
-        )
-        break
-      // Big A
-      case 2:
-        update(
-          'imageWidth',
-          info.imagePosition === 2 ? Math.floor(bigAWidth / 2) : bigAWidth
-        )
-        break
-      // Vaccinate
-      case 3:
-        update(
-          'imageWidth',
-          info.imagePosition === 2 ? Math.floor(blockWidth / 2) : blockWidth
-        )
-        break
-    }
   }
 
   return (
@@ -99,7 +68,18 @@ const SigControls = ({update, info, floatWidth, blockWidth}) => {
               onClick={setPosition}
               defaultChecked={info.imagePosition === 1}
             />{' '}
-            Right
+            Float image right
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="imagePosition"
+              value="3"
+              onClick={setPosition}
+              defaultChecked={info.imagePosition === 1}
+            />{' '}
+            Float image left
           </label>
         </div>
         <div className="mb-3">
@@ -195,13 +175,13 @@ const SigControls = ({update, info, floatWidth, blockWidth}) => {
             <tbody>
               <tr>
                 <td>
-                  Image size: {info.imageWidth}
+                  Image size: {info.imageWidth}%
                   <br />
                   <Slider
                     axis="x"
                     x={info.imageWidth}
-                    xmax={maxWidth}
-                    xmin={50}
+                    xmax={100}
+                    xmin={20}
                     onChange={(e) => {
                       update('imageWidth', e.x)
                     }}
@@ -247,7 +227,7 @@ const SigControls = ({update, info, floatWidth, blockWidth}) => {
                 </td>
               </tr>
               <tr>
-                <td colSpan="2">
+                <td>
                   Tag font size: {info.tagSize}
                   <br />
                   <Slider
@@ -257,6 +237,19 @@ const SigControls = ({update, info, floatWidth, blockWidth}) => {
                     x={info.tagSize}
                     onChange={(e) => {
                       update('tagSize', e.x)
+                    }}
+                  />
+                </td>
+                <td>
+                  Block size: {info.blockSize}
+                  <br />
+                  <Slider
+                    axis="x"
+                    xmin={200}
+                    xmax={500}
+                    x={info.blockSize}
+                    onChange={(e) => {
+                      update('blockSize', e.x)
                     }}
                   />
                 </td>

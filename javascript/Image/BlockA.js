@@ -15,7 +15,7 @@ const BlockA = ({sigImage, fontSize, department, lineHeight, imageWidth}) => {
         <div style={{textAlign: 'center'}}>
           <img
             src="./img/block-a.png"
-            style={{width: imageWidth.toString() + 'px'}}
+            style={{width: imageWidth.toString() + '%'}}
           />
         </div>
         {department.split('\n').map((item, key) => {

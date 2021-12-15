@@ -5,11 +5,12 @@ import Image from '../Image/Image'
 import CET from '../CET'
 import SigText from '../SigText'
 
-const Float = ({info, sigImage, floatWidth}) => {
+const FloatRight = ({info, sigImage}) => {
+  const {site, tagLine, blockSize} = info
   const cellPadding = 4
-  const tableWidth = floatWidth + cellPadding * 2
-  const cellWidth = Math.floor(floatWidth / 2)
-  const {site, tagLine} = info
+  const tableWidth = blockSize + cellPadding * 2
+  const leftBlock = Math.floor(blockSize * 0.7)
+  const rightBlock = Math.floor(blockSize * 0.3)
   const fullUrl = site ? `${site}.appstate.edu` : 'appstate.edu'
   return (
     <table
@@ -23,16 +24,15 @@ const Float = ({info, sigImage, floatWidth}) => {
         <tr>
           <td
             style={{
-              width: cellWidth.toString() + 'px',
-              maxWidth: cellWidth.toString() + 'px',
+              width: leftBlock.toString() + 'px',
+              maxWidth: leftBlock.toString() + 'px',
               verticalAlign: 'top',
             }}>
             <SigText {...{info}} />
           </td>
           <td
             style={{
-              width: cellWidth.toString() + 'px',
-              maxWidth: cellWidth.toString() + 'px',
+              maxWidth: rightBlock.toString() + 'px',
               borderLeft: '1px solid #aaa',
               textAlign: 'center',
               verticalAlign: 'center',
@@ -61,11 +61,11 @@ const Float = ({info, sigImage, floatWidth}) => {
   )
 }
 
-Float.propTypes = {
+FloatRight.propTypes = {
   sig: PropTypes.object,
   info: PropTypes.object,
   sigImage: PropTypes.object,
-  floatWidth: PropTypes.number,
+  blockSize: PropTypes.number,
 }
 
-export default Float
+export default FloatRight

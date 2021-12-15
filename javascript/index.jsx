@@ -31,9 +31,11 @@ const Signature = ({buildings}) => {
     imageDownload: null,
     imagePosition: 0,
     imageType: 1,
-    imageWidth: 250,
+    imageWidth: 100,
     tagLine: true,
     tagSize: 22,
+    blockSize: 300,
+    floatSize: 60,
   }
 
   const [info, setInfo] = useState({...defaultInfo})
@@ -50,12 +52,6 @@ const Signature = ({buildings}) => {
   useEffect(() => {
     update('lineHeight', info.fontSize)
   }, [info.fontSize])
-
-  /**
-   * Controls the large width of the float box
-   */
-  const floatWidth = 500
-  const blockWidth = 300
 
   const sig = useRef()
   const sigImage = useRef()
@@ -127,8 +123,8 @@ const Signature = ({buildings}) => {
         {' '}
         <h2>Step 3</h2>
         <p>Review the look of your signature.</p>
-        <SigControls {...{update, info, floatWidth, blockWidth}} />
-        <SignatureView {...{sig, info, sigImage, floatWidth, blockWidth}} />
+        <SigControls {...{update, info}} />
+        <SignatureView {...{sig, info, sigImage}} />
       </div>
       <hr />
       <table className="table table">
