@@ -13,15 +13,16 @@ const buildings = [
     address: '101 D. D. Dougherty, Boone, NC 28608',
   },
   {
+    name: 'Human Resources Building',
+    address: '330 University Hall Dr, Boone, NC 28607',
+  },
+  {
     name: 'I.G Greer',
     address: '401 Academy Street, Boone, NC 28607',
   },
   {name: 'John E. Thomas (JET)', address: '287 Rivers Street, Boone, NC 28608'},
+  {name: 'Leon Levine Hall', address: '1179 State Farm Rd, Boone, NC 28607'},
   {name: 'Miles Annas Building', address: '614 Howard Street, Boone, NC 28608'},
-  {
-    name: 'Human Resources Building',
-    address: '330 University Hall Dr, Boone, NC 28607',
-  },
   {
     name: 'Plemmons Student Union',
     address: '263 Locust Street, Boone, NC 28608',
