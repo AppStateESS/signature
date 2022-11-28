@@ -3,6 +3,7 @@ import React from 'react'
 import Swoop from './Swoop'
 import BlockA from './BlockA'
 import Vaccine from './Vaccine'
+import AppState from './AppState'
 import PropTypes from 'prop-types'
 
 const Image = ({info, sigImage}) => {
@@ -51,6 +52,21 @@ const Image = ({info, sigImage}) => {
     case 3:
       return (
         <Vaccine
+          {...{
+            sigImage,
+            fontSize,
+            department,
+            fontTop,
+            lineHeight,
+            imagePosition,
+            imageType,
+            imageWidth,
+          }}
+        />
+      )
+    case 4:
+      return (
+        <AppState
           {...{
             sigImage,
             fontSize,

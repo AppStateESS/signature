@@ -1,5 +1,5 @@
 'use strict'
-import React from 'react'
+import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import Slider from 'react-input-slider'
 
@@ -27,9 +27,24 @@ const SigControls = ({update, info}) => {
     }
   }
 
+  useEffect(() => {
+    if (!info.tagLine && info.imagePosition === 2) {
+      update('imagePosition', 0)
+    }
+  }, [info.tagLine])
+
+  useEffect(() => {
+    if (info.imagePosition === 2 && !info.tagLine) {
+      update('tagLine', true)
+    }
+  }, [info.imagePosition])
+
   const setImageType = (imageType) => {
     const imageTypeInt = parseInt(imageType.target.value)
     update('imageType', imageTypeInt)
+    if (imageTypeInt === 0) {
+      update('imagePosition', 0)
+    }
   }
 
   return (
@@ -43,8 +58,8 @@ const SigControls = ({update, info}) => {
               type="radio"
               name="imagePosition"
               value="0"
-              onClick={setPosition}
-              defaultChecked={info.imagePosition === 0}
+              onChange={setPosition}
+              checked={info.imagePosition === 0}
             />{' '}
             Bottom
           </label>
@@ -54,10 +69,10 @@ const SigControls = ({update, info}) => {
               type="radio"
               name="imagePosition"
               value="2"
-              onClick={setPosition}
-              defaultChecked={info.imagePosition === 2}
+              onChange={setPosition}
+              checked={info.imagePosition === 2}
             />{' '}
-            Bottom - Split
+            Bottom - Split w/ Tag line
           </label>
           <br />
           <label>
@@ -65,8 +80,8 @@ const SigControls = ({update, info}) => {
               type="radio"
               name="imagePosition"
               value="1"
-              onClick={setPosition}
-              defaultChecked={info.imagePosition === 1}
+              onChange={setPosition}
+              checked={info.imagePosition === 1}
             />{' '}
             Float image right
           </label>
@@ -76,8 +91,8 @@ const SigControls = ({update, info}) => {
               type="radio"
               name="imagePosition"
               value="3"
-              onClick={setPosition}
-              defaultChecked={info.imagePosition === 1}
+              onChange={setPosition}
+              checked={info.imagePosition === 3}
             />{' '}
             Float image left
           </label>
@@ -90,8 +105,8 @@ const SigControls = ({update, info}) => {
               type="radio"
               name="imageType"
               value="0"
-              onClick={setImageType}
-              defaultChecked={info.imageType === 0}
+              onChange={setImageType}
+              checked={info.imageType === 0}
             />{' '}
             None
           </label>
@@ -101,8 +116,8 @@ const SigControls = ({update, info}) => {
               type="radio"
               name="imageType"
               value="1"
-              onClick={setImageType}
-              defaultChecked={info.imageType === 1}
+              onChange={setImageType}
+              checked={info.imageType === 1}
             />{' '}
             Mountain bird
           </label>
@@ -112,8 +127,8 @@ const SigControls = ({update, info}) => {
               type="radio"
               name="imageType"
               value="2"
-              onClick={setImageType}
-              defaultChecked={info.imageType === 2}
+              onChange={setImageType}
+              checked={info.imageType === 2}
             />{' '}
             Big A
           </label>
@@ -123,12 +138,25 @@ const SigControls = ({update, info}) => {
               type="radio"
               name="imageType"
               value="3"
-              onClick={(e) => {
+              onChange={(e) => {
                 update('imageType', parseInt(e.target.value))
               }}
-              defaultChecked={info.imageType === 3}
+              checked={info.imageType === 3}
             />{' '}
             Vaccinated
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="imageType"
+              value="4"
+              onChange={(e) => {
+                update('imageType', parseInt(e.target.value))
+              }}
+              checked={info.imageType === 4}
+            />{' '}
+            AppState logo
           </label>
         </div>
       </div>
@@ -149,7 +177,7 @@ const SigControls = ({update, info}) => {
           </label>
         </div>
         <div>
-          <strong>Tagline</strong>
+          <strong>Student Affairs Tagline</strong>
           <br />
           <label>
             <input
@@ -160,7 +188,7 @@ const SigControls = ({update, info}) => {
               value="1"
               checked={info.tagLine}
             />{' '}
-            Include tag line
+            Include Care. Engage. Transform
           </label>
         </div>
       </div>

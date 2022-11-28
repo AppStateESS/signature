@@ -1,5 +1,5 @@
 'use strict'
-import React, {useState} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 /** Currently not in use but kept just in case */
